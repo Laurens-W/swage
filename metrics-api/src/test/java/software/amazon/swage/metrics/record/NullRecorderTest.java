@@ -1,10 +1,10 @@
 package software.amazon.swage.metrics.record;
 
-import org.junit.Test;
-
-import static org.junit.Assert.assertSame;
+import org.junit.jupiter.api.Test;
 import software.amazon.swage.collection.TypedMap;
 import software.amazon.swage.metrics.MetricContext;
+
+import static org.junit.jupiter.api.Assertions.assertSame;
 
 public class NullRecorderTest {
 

@@ -4,11 +4,12 @@ import java.lang.management.MemoryPoolMXBean;
 import java.lang.management.MemoryUsage;
 import java.util.Arrays;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import software.amazon.swage.metrics.MetricContext;
 import software.amazon.swage.metrics.Unit;
 
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.never;
@@ -24,14 +25,15 @@ public class HeapMemoryAfterGCSensorTest {
 
     private MetricContext metricContext;
 
-    @Before
+    @BeforeEach
     public void initialize() {
         metricContext = mock(MetricContext.class);
     }
 
-    @Test(expected = IllegalStateException.class)
+    @Test
     public void sense_withNullMemoryPoolList_throwsIllegalStateException() {
-        new HeapMemoryAfterGCSensor(() -> null).sense(metricContext);
+        assertThrows(IllegalStateException.class, () ->
+            new HeapMemoryAfterGCSensor(() -> null).sense(metricContext));
     }
 
     @Test

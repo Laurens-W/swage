@@ -14,14 +14,14 @@
  */
 package software.amazon.swage.threadcontext;
 
-import org.junit.Test;
-
 import java.util.concurrent.CountDownLatch;
+
+import static org.junit.jupiter.api.Assertions.assertSame;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 import java.util.concurrent.atomic.AtomicReference;
 
-import static org.junit.Assert.assertSame;
+import org.junit.jupiter.api.Test;
 
 public class ContextAwareExecutorTest {
     private static final ThreadContext.Key<String> KEY = ThreadContext.key(String.class);

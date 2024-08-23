@@ -20,10 +20,10 @@ import java.util.List;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 
-import org.junit.Test;
-
-import static org.junit.Assert.assertTrue;
+import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentMatcher;
+
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.argThat;
 import static org.mockito.Mockito.atLeastOnce;
@@ -85,6 +85,6 @@ public class MXBeanPollerTest {
         MXBeanPoller poller = new MXBeanPoller(executor, new NullRecorder(), 5, Collections.emptyList());
         poller.shutdown();
 
-        assertTrue("Executor not shutdown on poller shutdown", executor.isShutdown());
+        assertTrue(executor.isShutdown(), "Executor not shutdown on poller shutdown");
     }
 }

@@ -3,21 +3,21 @@ package software.amazon.swage.metrics.record;
 import java.time.Instant;
 import java.util.Arrays;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import static org.mockito.ArgumentMatchers.argThat;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.verify;
 import org.mockito.Spy;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoSettings;
+import org.mockito.quality.Strictness;
 import software.amazon.swage.collection.TypedMap;
 import software.amazon.swage.metrics.Metric;
 import software.amazon.swage.metrics.MetricContext;
 import software.amazon.swage.metrics.Unit;
 
-@RunWith(MockitoJUnitRunner.class)
+@MockitoSettings(strictness = Strictness.WARN)
 public class MultiRecorderTest {
     private static final Metric METRIC = Metric.define("Metric");
 
@@ -29,7 +29,7 @@ public class MultiRecorderTest {
 
     private MultiRecorder recorder;
 
-    @Before
+    @BeforeEach
     public void init() {
         recorder = new MultiRecorder(Arrays.asList(delegate1, delegate2));
     }
